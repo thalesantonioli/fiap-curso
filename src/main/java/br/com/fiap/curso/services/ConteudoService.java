@@ -2,13 +2,13 @@ package br.com.fiap.curso.services;
 
 import java.util.Optional;
 
+import br.com.fiap.curso.repositories.ConteudoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.fiap.curso.entities.Conteudo;
-import br.com.fiap.curso.repositories.ConteudoRepository;
 
 @Service
 public class ConteudoService {

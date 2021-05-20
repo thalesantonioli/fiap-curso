@@ -1,21 +1,10 @@
 package br.com.fiap.curso.entities;
 
+import br.com.fiap.curso.enums.CursoNivel;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import br.com.fiap.curso.enums.CursoNivel;
 
 @Entity
 @Table(name = "tb_curso")
@@ -51,8 +40,10 @@ public class Curso implements Serializable {
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Modulo> modulos;
 
-	public Curso(Long id, CursoNivel nivel, String nome, String descricao, Double precoOriginal,
-			Double precoPromocional, String ulrImagem, List<Modulo> modulos) {
+	@ManyToMany(mappedBy = "cursos")
+	private List<Usuario> usuarios;
+
+	public Curso(Long id, CursoNivel nivel, String nome, String descricao, Double precoOriginal, Double precoPromocional, String ulrImagem, List<Modulo> modulos, List<Usuario> usuarios) {
 		this.id = id;
 		this.nivel = nivel;
 		this.nome = nome;
@@ -61,6 +52,7 @@ public class Curso implements Serializable {
 		this.precoPromocional = precoPromocional;
 		this.ulrImagem = ulrImagem;
 		this.modulos = modulos;
+		this.usuarios = usuarios;
 	}
 
 	public Curso() {
@@ -131,12 +123,11 @@ public class Curso implements Serializable {
 		this.modulos = modulos;
 	}
 
-	@Override
-	public String toString() {
-		return "Curso [id=" + id + ", nivel=" + nivel + ", nome=" + nome + ", descricao=" + descricao
-				+ ", precoOriginal=" + precoOriginal + ", precoPromocional=" + precoPromocional + ", ulrImagem="
-				+ ulrImagem + ", modulos=" + modulos + "]";
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
-	
-	
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }
