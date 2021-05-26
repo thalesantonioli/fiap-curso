@@ -31,7 +31,7 @@ public class Usuario implements Serializable {
 				inverseJoinColumns = @JoinColumn(name = "id_curso"))
 	private List<Curso> cursos;
 	
-	@OneToOne(mappedBy = "carrinho")
+	@OneToOne(mappedBy = "usuario")
 	private Carrinho carrinho;
 
 	public Usuario(Long id, String nome, String email, String password, List<Curso> cursos) {

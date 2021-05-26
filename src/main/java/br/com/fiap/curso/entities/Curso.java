@@ -40,7 +40,7 @@ public class Curso implements Serializable {
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Modulo> modulos;
 
-	@ManyToMany(mappedBy = "usuario")
+	@ManyToMany(mappedBy = "cursos")
 	private List<Usuario> usuarios;
 
 	public Curso(Long id, CursoNivel nivel, String nome, String descricao, Double precoOriginal, Double precoPromocional, String ulrImagem, List<Modulo> modulos, List<Usuario> usuarios) {

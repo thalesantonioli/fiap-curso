@@ -28,7 +28,7 @@ public class Cupom implements Serializable{
 	@Column(name = "desconto_direto")
 	private Integer descontoDireto;
 	
-	@ManyToMany(mappedBy = "carrinho")
+	@ManyToMany(mappedBy = "cupons")
 	private List<Carrinho> carrinhos;
 
 	public Cupom() {
