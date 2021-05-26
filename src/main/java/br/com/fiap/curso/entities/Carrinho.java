@@ -26,7 +26,7 @@ public class Carrinho implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "tb_carrinho_cupom",
 				joinColumns = @JoinColumn(name = "id_carrinho"),
-				inverseJoinColumns = @JoinColumn(name = "id_carrinho"))
+				inverseJoinColumns = @JoinColumn(name = "id_cupom"))
 	private List<Cupom> cupons;
 	
 	@ManyToMany
@@ -87,6 +87,5 @@ public class Carrinho implements Serializable {
 	public void setCursos(List<Curso> cursos) {
 		this.cursos = cursos;
 	}
-	
-	
+
 }

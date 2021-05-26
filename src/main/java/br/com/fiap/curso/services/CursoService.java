@@ -45,6 +45,16 @@ public class CursoService {
 		
 		return optional.get();
 	}
+
+	public Curso findByNome(String nome) {
+		Optional<Curso> optional = cursoRepository.findByNome(nome);
+
+		if (!optional.isPresent()) {
+			throw new RuntimeException("Curso não encontrado");
+		}
+
+		return optional.get();
+	}
 	
 	public Page<Curso> findAll(Pageable pageable){
 		return cursoRepository.findAll(pageable);

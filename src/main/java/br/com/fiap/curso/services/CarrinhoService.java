@@ -1,7 +1,9 @@
 package br.com.fiap.curso.services;
 
+import java.util.List;
 import java.util.Optional;
 
+import br.com.fiap.curso.entities.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,10 +42,21 @@ public class CarrinhoService {
 		Optional<Carrinho> optional = carrinhoRepository.findById(id);
 		
 		if (!optional.isPresent()) {
-			throw new RuntimeException("Módulo não encontrado");
+			throw new RuntimeException("Carrinho não encontrado");
 		}
 		
 		return optional.get();
+	}
+
+	public List<Carrinho> findByUsuario(Usuario usuario) {
+
+		List<Carrinho> carrinhos = carrinhoRepository.findByUsuario(usuario);
+
+		if (carrinhos.isEmpty()) {
+			throw new RuntimeException("Carrinho não encontrado");
+		}
+
+		return carrinhos;
 	}
 	
 	public Page<Carrinho> findAll(Pageable pageable) {

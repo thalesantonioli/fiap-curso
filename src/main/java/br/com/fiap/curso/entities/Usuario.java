@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
 	@Column(name = "password")
 	private String password;
 
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_usuario_curso",
 				joinColumns = @JoinColumn(name = "id_usuario"),
 				inverseJoinColumns = @JoinColumn(name = "id_curso"))
@@ -83,5 +83,33 @@ public class Usuario implements Serializable {
 
 	public void setCursos(List<Curso> cursos) {
 		this.cursos = cursos;
+	}
+
+	public String listaCursos(){
+		
+		if (cursos.isEmpty()){
+			return "Aluno não possui cursos";
+		}else{
+
+			String teste = " ";
+			for (int i = 0; i< this.cursos.size();i++){
+				teste = teste + cursos.get(i).getNome();
+			}
+
+			return teste;
+		}
+		
+	}
+	
+	@Override
+	public String toString() {
+		return "Usuario{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", cursos=" + listaCursos() +
+				", carrinho=" + carrinho +
+				'}';
 	}
 }

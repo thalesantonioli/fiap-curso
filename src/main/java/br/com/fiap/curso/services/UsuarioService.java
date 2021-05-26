@@ -45,6 +45,28 @@ public class UsuarioService {
 		
 		return optional.get();
 	}
+
+	public Usuario findByNome(String nome) {
+
+		Optional<Usuario> optional = usuarioRepository.findByNome(nome);
+
+		if (!optional.isPresent()) {
+			throw new RuntimeException("Usuário não encontrado");
+		}
+
+		return optional.get();
+	}
+
+	public Usuario findByEmail(String email) {
+
+		Optional<Usuario> optional = usuarioRepository.findByemail(email);
+
+		if (!optional.isPresent()) {
+			throw new RuntimeException("Usuário não encontrado");
+		}
+
+		return optional.get();
+	}
 	
 	public Page<Usuario> findAll(Pageable pageable){
 		return usuarioRepository.findAll(pageable);
