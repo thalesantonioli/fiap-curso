@@ -22,10 +22,10 @@ public class Curso implements Serializable {
 	@Column(name = "nivel")
 	private CursoNivel nivel;
 
-	@Column(name = "nome")
+	@Column(name = "nm_curso")
 	private String nome;
 
-	@Column(name = "descricao")
+	@Column(name = "ds_curso")
 	private String descricao;
 
 	@Column(name = "preco_original")
@@ -40,7 +40,7 @@ public class Curso implements Serializable {
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Modulo> modulos;
 
-	@ManyToMany(mappedBy = "cursos")
+	@ManyToMany(mappedBy = "usuario")
 	private List<Usuario> usuarios;
 
 	public Curso(Long id, CursoNivel nivel, String nome, String descricao, Double precoOriginal, Double precoPromocional, String ulrImagem, List<Modulo> modulos, List<Usuario> usuarios) {

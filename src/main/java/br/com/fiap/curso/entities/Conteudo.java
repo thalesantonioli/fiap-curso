@@ -22,7 +22,7 @@ public class Conteudo implements Serializable {
 	@Column(name = "id_conteudo")
 	private Long id;
 
-	@Column(name = "descricao")
+	@Column(name = "ds_conteudo")
 	private String descricao;	
 
 	public Conteudo() {

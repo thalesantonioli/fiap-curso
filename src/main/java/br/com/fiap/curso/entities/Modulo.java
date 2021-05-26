@@ -17,7 +17,7 @@ public class Modulo implements Serializable {
 	@Column(name = "id_modulo")
 	private Long id;
 
-	@Column(name = "nome")
+	@Column(name = "nm_modulo")
 	private String nome;
 
 	@Column(name = "carga_horaria")

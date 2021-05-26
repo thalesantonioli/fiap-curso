@@ -1,7 +1,5 @@
 package br.com.fiap.curso.entities;
 
-import br.com.fiap.curso.enums.CursoNivel;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -18,7 +16,7 @@ public class Usuario implements Serializable {
 	@Column(name = "id_usuario")
 	private Long id;
 
-	@Column(name = "nome")
+	@Column(name = "nm_usuario")
 	private String nome;
 
 	@Column(name = "email")
@@ -28,7 +26,13 @@ public class Usuario implements Serializable {
 	private String password;
 
 	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "tb_usuario_curso",
+				joinColumns = @JoinColumn(name = "id_usuario"),
+				inverseJoinColumns = @JoinColumn(name = "id_curso"))
 	private List<Curso> cursos;
+	
+	@OneToOne(mappedBy = "carrinho")
+	private Carrinho carrinho;
 
 	public Usuario(Long id, String nome, String email, String password, List<Curso> cursos) {
 		this.id = id;
