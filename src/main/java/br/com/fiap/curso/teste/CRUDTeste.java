@@ -169,13 +169,13 @@ public class CRUDTeste {
         // Persistindo o usuário Henrique na Base.
         usuarioService.create(usuarioHenrique);
 
-        // Criação do usuário Henrique e preenchimento das suas respectivas informações
+        // Criação do usuário Anderson e preenchimento das suas respectivas informações
         Usuario usuarioAnderson = new Usuario();
         usuarioAnderson.setEmail("anderson@fiap.com");
         usuarioAnderson.setPassword("java123");
         usuarioAnderson.setNome("Anderson Yonei");
 
-        // Persistindo o usuário Anderson na Base.
+        // Persistindo o usuário Anderson na Base.s
         usuarioService.create(usuarioAnderson);
 
         // Criação do usuário Thalles e preenchimento das suas respectivas informações
